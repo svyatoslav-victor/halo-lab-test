@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/halo-lab-test/static/css/main.50410625.css",
-    "main.js": "/halo-lab-test/static/js/main.4ed374f1.js",
+    "main.css": "/halo-lab-test/static/css/main.6679ff89.css",
+    "main.js": "/halo-lab-test/static/js/main.6e20f84f.js",
     "static/js/787.1adde462.chunk.js": "/halo-lab-test/static/js/787.1adde462.chunk.js",
     "index.html": "/halo-lab-test/index.html",
-    "main.50410625.css.map": "/halo-lab-test/static/css/main.50410625.css.map",
-    "main.4ed374f1.js.map": "/halo-lab-test/static/js/main.4ed374f1.js.map",
+    "main.6679ff89.css.map": "/halo-lab-test/static/css/main.6679ff89.css.map",
+    "main.6e20f84f.js.map": "/halo-lab-test/static/js/main.6e20f84f.js.map",
     "787.1adde462.chunk.js.map": "/halo-lab-test/static/js/787.1adde462.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.50410625.css",
-    "static/js/main.4ed374f1.js"
+    "static/css/main.6679ff89.css",
+    "static/js/main.6e20f84f.js"
   ]
 }
