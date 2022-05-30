@@ -20,7 +20,8 @@
     right: -20px;
     width: 40px;
     height: 40px;
-    font-size: 24px;
+    font-size: 28px;
+    line-height: 40px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -87,7 +88,8 @@
       &_clear {
         width: 24px;
         height: 24px;
-        font-size: 24px;
+        font-size: 22px;
+        line-height: 20px;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -100,9 +102,9 @@
       }
 
       .onError {
-        width: 24px;
-        height: 24px;
-        font-size: 24px;
+        width: 26px;
+        height: 26px;
+        font-size: 27px;
         display: flex;
         justify-content: center;
         align-items: center;
