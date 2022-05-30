@@ -1,0 +1,144 @@
+@import './utils/variables';
+
+body {
+  font-family: $roboto;
+  margin: 0;
+  padding: 0;
+  overflow: overlay;
+  background: #e5e5e5;
+  box-sizing: border-box;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+}
+
+.loader {
+  border: 20px solid #f3f3f3;
+  border-top: 20px solid $button_buy;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50px;
+  height: 50px;
+  margin: -50px;
+  animation: spin 2s linear infinite;
+
+
+  @keyframes spin {
+    0% { transform: rotate(0deg) }
+    100% { transform: rotate(360deg) }
+  }
+}
+
+.wrapper {
+  display: grid;
+  justify-items: center;
+  animation: fadeIn 1s forwards;
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+}
+
+.overlay-visible {
+  visibility: visible;
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  top: 0px;
+  z-index: 1;
+  opacity: 0.99;
+  overflow: hidden;
+  background-color: rgba(43, 42, 42, 0.927);
+  transition: all 0.5s ease-in-out;
+}
+
+.overlay-hidden {
+  visibility: hidden;
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  top: 0px;
+  z-index: 1;
+  opacity: 0;
+  overflow: hidden;
+  background-color: rgba(43, 42, 42, 0.927);
+  transition: all 0.5s ease-in-out;
+}
+
+.content {
+  position: relative;
+  min-width: 280px;
+  max-width: 1440px;
+  display: grid;
+  grid-auto-flow: row;
+  grid-template-columns: minmax(352px, 1440px);
+  row-gap: 70px;
+  padding: 104px 0;
+}
+
+.products {
+  display: grid;
+  grid-auto-flow: row;
+  justify-content: center;
+  grid-template-rows: auto 1fr;
+  grid-template-columns: repeat(auto-fill, 352px);
+  row-gap: 40px;
+  column-gap: 40px;
+}
+
+.buy_cheapest {
+  width: 235px;
+  height: 60px;
+  justify-self: center;
+  border-radius: $button_border_radius;
+  color: #fff;
+  background-color: $button_buy;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 28px;
+  letter-spacing: -0.02em;
+  outline: 5px double transparent;
+  transition: all 0.5s ease-in-out;
+
+  &:hover {
+    background-color: $button_hover;
+  }
+
+  &:active {
+    outline: 5px double $button_hover;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .content {
+    row-gap: 50px;
+    padding: 82px 0;
+  }
+
+  .products {
+    grid-template-columns: repeat(auto-fill, 316px);
+    justify-items: center;
+    row-gap: 20px;
+    column-gap: 20px;
+  }
+}
+
+@media screen and (max-width: 660px) {
+  .content {
+    row-gap: 50px;
+    padding: 50px 0;
+  }
+
+  .products {
+    grid-template-columns: repeat(auto-fill, 352px);
+    justify-items: center;
+    row-gap: 40px;
+    column-gap: 40px;
+  }
+}

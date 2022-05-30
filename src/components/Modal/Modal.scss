@@ -1,0 +1,182 @@
+@import '../../utils/variables';
+
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  min-width: 300px;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: $card_border_radius;
+  padding: 60px 50px;
+
+  &__close {
+    position: fixed;
+    top: -20px;
+    right: -20px;
+    width: 40px;
+    height: 40px;
+    font-size: 24px;
+    border-radius: 50%;
+    background: #f2f2f2;
+    outline: 5px double transparent;
+    transition: all 0.5s ease-in-out;
+
+    &:hover {
+      background: $button_hover;
+      color: #fff;
+    }
+
+    &:active {
+      outline: 5px double $button_hover;
+    }
+  }
+
+  .card__description {
+    align-items: center;
+
+    &_name {
+      padding-bottom: 16px;
+    }
+  }
+
+  .order {
+    display: flex;
+    flex-direction: column;
+    padding-top: 32px;
+
+    &__field {
+      display: flex;
+      align-items: center;
+      width: 256px;
+      height: 56px;
+      border: 1px solid rgba(0, 0, 0, 0.2);
+      border-radius: $button_border_radius;
+      padding: 0 16px;
+      letter-spacing: -0.02em;
+      transition: border 0.5s ease-in-out;
+
+      &--error {
+        border: 1px solid $input_error;
+      }
+  
+      &--ok {
+        border: 1px solid $input_ok;
+      }
+
+      &_input {
+        border: none;
+        width: 100%;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 24px;
+        background: #fff;
+
+        &:focus-visible {
+          outline: none;
+        }
+      }
+
+      &_clear {
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        font-size: 20px;
+        line-height: 20px;
+        visibility: hidden;
+        opacity: 0;
+        background-color: $input_error;
+        color: #fff;
+        transition: opacity 0.5s ease-in-out;
+      }
+
+      .onError {
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        font-size: 20px;
+        line-height: 20px;
+        visibility: visible;
+        opacity: 1;
+        background-color: $input_error;
+        color: #fff;
+      }
+    }
+
+    &__error {
+      margin: 0;
+      padding: 0;
+      height: 16px;
+      color: $input_error;
+      font-size: 12px;
+      line-height: 16px;
+      margin-bottom: 8px;
+      opacity: 0;
+      transition: opacity 0.5s ease-in-out;
+    }
+
+    &__button {
+      width: 288px;
+      height: 56px;
+      border: 1px solid rgba(0, 0, 0, 0.2);
+      border-radius: $button_border_radius;
+      margin-top: 16px;
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 24px;
+      letter-spacing: 0.04em;
+      color: #fff;
+      background: $button_buy;
+      outline: 5px solid transparent;
+      transition: all 0.5s ease-in-out;
+
+      &:hover {
+        background: $button_hover;
+
+        &::after {
+          content: '   \279D';
+        }
+      }
+
+      &:active {
+        outline: 5px solid $button_hover;
+      }
+    }
+
+    .disabled {
+      color: #000;
+      background: #f2f2f2;
+      outline: 5px solid transparent;
+      cursor: not-allowed;
+
+      &::after {
+        content: '';
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .modal {
+    padding: 20px 10px;
+    .card__description, .order {
+      transform: scale(0.85);
+    }
+  }
+}
+
+@media screen and (max-width: 660px) {
+  .modal {
+    top: 25%;
+    left: 50%;
+    transform: translate(-50%, -25%);
+    padding: 10px 0;
+    .card__description, .order {
+      transform: scale(0.75);
+    }
+  }
+}

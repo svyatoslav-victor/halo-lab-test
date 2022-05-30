@@ -1,26 +1,124 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from 'react';
+import { getProducts } from './products';
+import { Product } from './types';
+import { Card } from './components/Card/Card';
+import { Modal } from './components/Modal/Modal';
+import classNames from 'classnames';
 
-function App() {
+import './App.scss';
+
+export const App: React.FC = () => {
+  const [loading, setLoading] = useState<boolean>(false);
+  const [products, setProducts] = useState<Product[]>([]);
+  const [modalProduct, setModalProduct] = useState<Product>(
+    {
+      name: '',
+      category: '',
+      price: 0
+    }
+  );
+  const [showModal, setShowModal] = useState<boolean>(false);
+  const [isScrollVisible, setIsScrollVisible] = useState<boolean>(false);
+
+  const body = document.querySelector('body');  
+
+  const fetchProducts = async () => {
+    setLoading(true);
+    const productList = await getProducts();
+
+    setProducts(productList);
+    setLoading(false);
+  };
+
+  useEffect(() => {
+    fetchProducts();
+  }, []);
+
+  useEffect(() => {
+    window.addEventListener('scroll', trackScroll);
+  }, []);
+
+  const trackScroll = () => {
+    const element = document.documentElement;
+    const totalScroll = element.scrollHeight - element.clientHeight;
+
+    if ((element.scrollTop / totalScroll) > 0.20) {
+      setIsScrollVisible(true);
+    } else {
+      setIsScrollVisible(false);
+    }
+  };
+
+  const buyCheapest = () => {
+    setShowModal(true);
+    setModalProduct(products.sort((a, b) => a.price - b.price)[0]);
+
+    if (body) {
+      body.style.overflow = 'hidden';
+    }
+  }
+
+  const buyProduct = (event: React.MouseEvent<HTMLElement>) => {    
+    setShowModal(true);
+    setModalProduct(products.find(product => (
+      product.name === event.currentTarget.id
+    ))!);
+
+    if (body) {
+      body.style.overflow = 'hidden';
+    }
+  }
+
+  const closeModal = () => {
+    setShowModal(false);
+
+    if (body) {
+      body.style.overflow = 'overlay';
+    }
+  }
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    <>
+      {loading ? (
+        <div className='loader'></div>
+      ) : (
+        <div className='wrapper'>
+        <div
+          className={classNames({
+            'overlay-visible': showModal,
+            'overlay-hidden': !showModal,
+          })}
+          onClick={closeModal}
         >
-          Learn React
-        </a>
-      </header>
-    </div>
+        </div>
+  
+        <div className='content'>
+          <div className='products'>
+            {products.map((product: Product) => (
+              <Card
+                key={product.name}
+                product={product}
+                buyProduct={buyProduct}
+              />
+            ))}
+          </div>
+  
+          {showModal && (
+            <Modal
+              product={modalProduct}
+              closeModal={closeModal}
+            />
+          )}
+  
+          <button
+            className='buy_cheapest'
+            onClick={buyCheapest}
+          >
+            Buy cheapest
+          </button>
+        </div>
+      </div>
+      )}
+    </>
   );
 }
-
-export default App;

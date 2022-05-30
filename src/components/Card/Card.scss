@@ -1,0 +1,53 @@
+@import '../../utils/variables';
+
+.card {
+  width: $card_width;
+  height: $card_height;
+  background: #fff;
+  padding: 32px;
+  border-radius: $card_border_radius;
+  display: flex;
+  justify-content: space-between;
+  transform: scale(1);
+
+  &:hover {
+    box-shadow: 24px 24px 40px rgba(75, 207, 160, 0.08);
+  }
+
+  &__purchase {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding-bottom: 8px;
+
+    &_button {
+      width: 64px;
+      height: 56px;
+      border-radius: $button_border_radius;
+      color: $button_buy;
+      background-color: #fff;
+      outline: 1px solid $button_buy;
+      transition: all 0.5s ease-in-out;
+
+      &:hover {
+        color: #fff;
+        background-color: $button_hover;
+        outline: 1px solid $button_hover;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .card {
+    padding: 28px;
+    transform: scale(0.9);
+  }
+}
+
+@media screen and (max-width: 660px) {
+  .card {
+    padding: 32px;
+    transform: scale(1);
+  }
+}

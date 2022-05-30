@@ -1,0 +1,47 @@
+.card__description {
+  display: flex;
+  flex-direction: column;
+
+  &_category {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    padding-bottom: 8px;
+    letter-spacing: 0.04em;
+  }
+
+  &_name {
+    font-size: 40px;
+    font-weight: 400;
+    line-height: 48px;
+    letter-spacing: -0.02em;
+    padding-bottom: 40px;
+  }
+
+  &_price {
+    display: flex;
+    align-items: center;
+    font-size: 60px;
+    font-weight: 400;
+    line-height: 72px;
+    letter-spacing: -0.02em;
+
+    span {
+      font-size: 30px;
+      line-height: 36px;
+      padding-right: 4px;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .card__description {
+    transform: scale(0.9);
+  }
+}
+
+@media screen and (max-width: 660px) {
+  .card__description {
+    transform: scale(1);
+  }
+}
