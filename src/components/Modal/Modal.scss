@@ -87,11 +87,11 @@
       &_clear {
         width: 24px;
         height: 24px;
-        border-radius: 50%;
-        font-size: 20px;
+        font-size: 24px;
         display: flex;
         justify-content: center;
         align-items: center;
+        border-radius: 50px;
         visibility: hidden;
         opacity: 0;
         background-color: $input_error;
@@ -102,9 +102,11 @@
       .onError {
         width: 24px;
         height: 24px;
-        border-radius: 50%;
-        font-size: 20px;
-        line-height: 20px;
+        font-size: 24px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50px;
         visibility: visible;
         opacity: 1;
         background-color: $input_error;
