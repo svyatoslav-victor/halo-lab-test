@@ -18,7 +18,6 @@ export const App: React.FC = () => {
     }
   );
   const [showModal, setShowModal] = useState<boolean>(false);
-  const [isScrollVisible, setIsScrollVisible] = useState<boolean>(false);
 
   const body = document.querySelector('body');  
 
@@ -34,24 +33,10 @@ export const App: React.FC = () => {
     fetchProducts();
   }, []);
 
-  useEffect(() => {
-    window.addEventListener('scroll', trackScroll);
-  }, []);
-
-  const trackScroll = () => {
-    const element = document.documentElement;
-    const totalScroll = element.scrollHeight - element.clientHeight;
-
-    if ((element.scrollTop / totalScroll) > 0.20) {
-      setIsScrollVisible(true);
-    } else {
-      setIsScrollVisible(false);
-    }
-  };
-
   const buyCheapest = () => {
     setShowModal(true);
-    setModalProduct(products.sort((a, b) => a.price - b.price)[0]);
+    const productsCopy = [...products];
+    setModalProduct(productsCopy.sort((a, b) => a.price - b.price)[0]);
 
     if (body) {
       body.style.overflow = 'hidden';
