@@ -58,6 +58,10 @@ export const App: React.FC = () => {
     setShowModal(false);
 
     if (body) {
+      if (navigator.userAgent.indexOf("Firefox")) {
+        body.style.overflow = 'auto';
+      }
+
       body.style.overflow = 'overlay';
     }
   }
